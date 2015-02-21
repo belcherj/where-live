@@ -6,6 +6,7 @@ $blue: #2196F3;
 /* styles for the custom element itself - lowest specificity */
 :host {
   display: block;
+  font-family: RobotoDraft, 'Helvetica Neue', Helvetica, Arial;
 }
 
 .drawer {
@@ -19,8 +20,12 @@ $blue: #2196F3;
   background: #4285f4;
 }
 
+core-label {
+  padding-bottom: 20px;
+}
+
 paper-checkbox {
-  margin-right: 10px;
+  padding-right: 10px;
 }
 
 paper-checkbox::shadow #checkbox.checked {
