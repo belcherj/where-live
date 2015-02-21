@@ -5,98 +5,98 @@
         "latitude": 37.782,
         "longitude": -122.447
       },
-      "magnitude": 5
+      "radius": 5
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.445
       },
-      "magnitude": 10
+      "radius": 10
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.443
       },
-      "magnitude": 15
+      "radius": 15
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.441
       },
-      "magnitude": 20
+      "radius": 20
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.439
       },
-      "magnitude": 25
+      "radius": 25
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.437
       },
-      "magnitude": 30
+      "radius": 30
     },
     {
       "centroid": {
         "latitude": 37.782,
         "longitude": -122.435
       },
-      "magnitude": 35
+      "radius": 35
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.447
       },
-      "magnitude": 40
+      "radius": 40
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.445
       },
-      "magnitude": 45
+      "radius": 45
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.443
       },
-      "magnitude": 50
+      "radius": 50
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.441
       },
-      "magnitude": 55
+      "radius": 55
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.439
       },
-      "magnitude": 60
+      "radius": 60
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.437
       },
-      "magnitude": 65
+      "radius": 65
     },
     {
       "centroid": {
         "latitude": 37.785,
         "longitude": -122.435
       },
-      "magnitude": 70
+      "radius": 70
     }
   ]
 }

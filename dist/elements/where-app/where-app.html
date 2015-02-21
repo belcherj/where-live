@@ -54,8 +54,6 @@
   <script>
     (function () {
 
-      var dataResponse = {};
-
       Polymer({
         publish: {
           mapInitiated: false,
@@ -64,19 +62,19 @@
 
         setFacets: function(response) {
           this.facets = response.detail.response.facets;
+        },
+
+        mapChanged: function() {
           this.updateUrl();
         },
 
         setMapPoints: function(response) {
-          if(response) {
-            dataResponse = response;
-          }
-
           if(!this.map) {
             return;
           }
 
-          this.points = dataResponse.detail.response.data;
+          this.points = response.detail.response.data;
+
           this.points.forEach(function(point) {
             var circle = {
               path: google.maps.SymbolPath.CIRCLE,
@@ -95,10 +93,6 @@
           }, this);
 
           return;
-        },
-
-        mapChanged: function() {
-          this.setMapPoints();
         },
 
         updateUrl: function() {
