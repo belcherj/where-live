@@ -13,14 +13,117 @@
       <paper-icon-button icon="refresh" role="button" tabindex="0" aria-label="refresh"></paper-icon-button>
       <paper-icon-button icon="more-vert" role="button" tabindex="0" aria-label="more-vert"></paper-icon-button>
     </core-toolbar>
-    <google-map fit></google-map>
+    <google-map fit map="{{ map }}"></google-map>
   </template>
   <script>
     (function () {
-      Polymer({
-        ready: function () {
-
+      var dataset = [
+        {
+          latitude: 37.782,
+          longitude: -122.447,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.445,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.443,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.441,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.439,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.437,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.782,
+          longitude: -122.435,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.447,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.445,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.443,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.441,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.439,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.437,
+          magnitude: randomNumber()
+        },
+        {
+          latitude: 37.785,
+          longitude: -122.435,
+          magnitude: randomNumber()
         }
+      ];
+
+      function randomNumber() {
+        return Math.floor((Math.random() * 100) + 1);
+      }
+
+      Polymer({
+        publish: {
+          mapInitiated: false,
+          points: dataset
+        },
+
+        mapChanged: function() {
+          if(this.mapInitiated) {
+            return;
+          }
+          this.points.forEach(function(point) {
+            var circle = {
+              path: google.maps.SymbolPath.CIRCLE,
+              fillColor: 'red',
+              fillOpacity: 0.2,
+              scale: point.magnitude,
+              strokeColor: 'white',
+              strokeWeight: 0.5
+            }
+            var position = new google.maps.LatLng(point.latitude, point.longitude);
+            var marker = new google.maps.Marker({
+              position: position,
+              icon: circle,
+              map: this.map
+            })
+          }, this);
+
+          return
+        }
+
       });
     })();
   </script>
