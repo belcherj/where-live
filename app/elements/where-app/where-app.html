@@ -1,0 +1,27 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../bower_components/google-map/google-map.html">
+
+<polymer-element name="where-app" attributes="">
+  <template>
+    <link rel="stylesheet" href="where-app.css">
+    <core-toolbar style="background: #4285f4; z-index: 1000;">
+      <paper-icon-button icon="menu" role="button" tabindex="0" aria-label="menu"></paper-icon-button>
+      <span flex="">Title</span>
+      <paper-icon-button icon="refresh" role="button" tabindex="0" aria-label="refresh"></paper-icon-button>
+      <paper-icon-button icon="more-vert" role="button" tabindex="0" aria-label="more-vert"></paper-icon-button>
+    </core-toolbar>
+    <google-map fit></google-map>
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        ready: function () {
+
+        }
+      });
+    })();
+  </script>
+</polymer-element>
