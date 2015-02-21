@@ -3,6 +3,7 @@
 <link rel="import" href="../../bower_components/core-toolbar/core-toolbar.html">
 <link rel="import" href="../../bower_components/core-drawer-panel/core-drawer-panel.html">
 <link rel="import" href="../../bower_components/core-label/core-label.html">
+<link rel="import" href="../../bower_components/core-ajax/core-ajax.html">
 <link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
@@ -30,96 +31,47 @@
       </core-header-panel>
 
     </core-drawer-panel>
+
+    <core-ajax
+      auto
+      url="../../facets.json"
+      handleAs="json"
+      on-core-response="{{ setFacets }}">
+    </core-ajax>
+    <core-ajax
+      auto
+      url="{{dataUrl}}"
+      handleAs="json"
+      on-core-response="{{ setMapPoints }}">
+    </core-ajax>
+
   </template>
   <script>
     (function () {
-      var dataset = [
-        {
-          latitude: 37.782,
-          longitude: -122.447,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.445,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.443,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.441,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.439,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.437,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.782,
-          longitude: -122.435,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.447,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.445,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.443,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.441,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.439,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.437,
-          magnitude: randomNumber()
-        },
-        {
-          latitude: 37.785,
-          longitude: -122.435,
-          magnitude: randomNumber()
-        }
-      ];
 
-      function randomNumber() {
-        return Math.floor((Math.random() * 100) + 1);
-      }
+      var dataResponse = {};
 
       Polymer({
         publish: {
           mapInitiated: false,
-          points: dataset
+          points: []
         },
 
-        mapChanged: function() {
-          if(this.mapInitiated) {
+        setFacets: function(response) {
+          this.facets = response.detail.response.facets;
+          this.updateUrl();
+        },
+
+        setMapPoints: function(response) {
+          if(response) {
+            dataResponse = response;
+          }
+
+          if(!this.map) {
             return;
           }
+
+          this.points = dataResponse.detail.response.data;
           this.points.forEach(function(point) {
             var circle = {
               path: google.maps.SymbolPath.CIRCLE,
@@ -129,7 +81,7 @@
               strokeColor: 'white',
               strokeWeight: 0.5
             }
-            var position = new google.maps.LatLng(point.latitude, point.longitude);
+            var position = new google.maps.LatLng(point.centroid.latitude, point.centroid.longitude);
             var marker = new google.maps.Marker({
               position: position,
               icon: circle,
@@ -137,7 +89,26 @@
             })
           }, this);
 
-          return
+          return;
+        },
+
+        mapChanged: function() {
+          this.setMapPoints();
+        },
+
+        updateUrl: function() {
+          //cluster?facets=parks,restaurants
+          var url = '/cluster?facets=';
+          this.facets.forEach( function(facet) {
+            if(facet.value) {
+              url= url + facet.value +',';
+            }
+          });
+
+          //USE DUMMY DATA
+          url = "../../data.json"
+
+          this.dataUrl = url;
         }
 
       });

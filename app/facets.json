@@ -1,0 +1,14 @@
+{
+  "facets" : [
+    {
+      "id": "parks",
+      "name": "Parks",
+      "description": "A lof of Parks"
+    },
+    {
+      "id": "restaurants",
+      "name": "Restaurants",
+      "description": "A lof of Restaurants"
+    }
+  ]
+}
