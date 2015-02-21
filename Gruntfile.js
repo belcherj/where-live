@@ -196,8 +196,8 @@ module.exports = function (grunt) {
           strip: true
         },
         files: {
-          '<%= yeoman.dist %>/elements/elements.vulcanized.html': [
-            '<%= yeoman.dist %>/elements/elements.html'
+          '<%= yeoman.dist %>/elements/where-app/where-app.vulcanized.html': [
+            '<%= yeoman.dist %>/elements/where-app/where-app.html'
           ]
         }
       }
@@ -235,7 +235,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
-            '*.{ico,txt}',
+            '*.{ico,txt,json}',
             '.htaccess',
             '*.html',
             'elements/**',
