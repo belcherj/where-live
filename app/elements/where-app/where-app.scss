@@ -20,7 +20,17 @@ $blue: #2196F3;
   background: #4285f4;
 }
 
+.ripple {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 48px;
+  height: 48px;
+  color: $blue;
+}
+
 core-label {
+  position: relative;
   padding-bottom: 20px;
 }
 

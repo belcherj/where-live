@@ -8,6 +8,7 @@
 <link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../../bower_components/google-map/google-map.html">
 <link rel="import" href="../../bower_components/font-roboto/font-roboto.html">
+<link rel="import" href="../../bower_components/paper-ripple/paper-ripple.html">
 
 <polymer-element name="where-app" attributes="">
   <template>
@@ -18,6 +19,7 @@
       <core-header-panel drawer class="drawer">
         <template repeat="{{ facet in facets }}">
           <core-label center horizontal layout>
+            <paper-ripple class="ripple circle"></paper-ripple>
             <paper-checkbox for></paper-checkbox>
             {{facet.name}}
           </core-label>
@@ -80,7 +82,7 @@
               path: google.maps.SymbolPath.CIRCLE,
               fillColor: 'red',
               fillOpacity: 0.2,
-              scale: point.magnitude,
+              scale: point.radius,
               strokeColor: 'white',
               strokeWeight: 0.5
             }
