@@ -16,10 +16,12 @@
     <core-drawer-panel>
 
       <core-header-panel drawer class="drawer">
-        <core-label center horizontal layout>
-          <paper-checkbox for></paper-checkbox>
-          <div>Foo</div>
-        </core-label>
+        <template repeat="{{ facet in facets }}">
+          <core-label center horizontal layout>
+            <paper-checkbox for></paper-checkbox>
+            {{facet.name}}
+          </core-label>
+        </template>
       </core-header-panel>
 
       <core-header-panel main>
